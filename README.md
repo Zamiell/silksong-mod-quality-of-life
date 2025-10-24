@@ -13,4 +13,8 @@ It uses the [BepInExPack for Silksong](https://thunderstore.io/c/hollow-knight-s
 
 ## Configuration
 
-The mod can be configured by editing the configuration file located at: `BepInEx/config/io.github.zamiel.qol.cfg`
+The mod can be configured by editing the configuration file. By default, it is located at:
+
+```txt
+C:\Users\[username]\AppData\Roaming\r2modmanPlus-local\HollowKnightSilksong\profiles\Default\BepInEx\config
+```
