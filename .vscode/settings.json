@@ -1,0 +1,49 @@
+// These are Visual Studio Code settings that should apply to this particular repository.
+{
+  // ----------------
+  // Vanilla settings
+  // ----------------
+
+  // This matches the Airbnb JavaScript style guide.
+  "editor.rulers": [100],
+  "editor.tabSize": 4,
+
+  // Always use "lf" to be consistent with all platforms.
+  "files.eol": "\n",
+
+  // Automatically insert a trailing newline when saving a file to match the POSIX standard.
+  "files.insertFinalNewline": true,
+
+  // Automatically remove all trailing whitespace when saving a file.
+  "files.trimTrailingWhitespace": true,
+
+  // Configure glob patterns for excluding files and folders in full text searches and quick open.
+  "search.exclude": {
+    "**/*.mp3": true,
+    "**/*.png": true,
+    "**/*.svg": true,
+    "**/*.wav": true,
+    "**/.yarn/": true,
+    "**/dist/": true,
+    "**/node_modules/": true,
+    "bun.lock": true,
+    "LICENSE": true,
+    "package-lock.json": true,
+    "pnpm-lock.yaml": true,
+    "yarn.lock": true
+  },
+
+  // -----------------
+  // Language settings
+  // -----------------
+
+  // Automatically run the formatter when certain files are saved.
+  "[csharp]": {
+    "editor.defaultFormatter": "csharpier.csharpier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[css][html][json][jsonc][markdown][postcss][yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  }
+}

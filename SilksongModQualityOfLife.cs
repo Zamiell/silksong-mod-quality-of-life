@@ -10,12 +10,10 @@ namespace QoL
     {
         private void Awake()
         {
-            Logger.LogInfo("QoL: Loaded.");
-
             var harmony = new Harmony("io.github.zamiel.qol");
             harmony.PatchAll();
 
-            Logger.LogInfo("Harmony patches applied successfully");
+            Logger.LogInfo("QoL: Loaded.");
         }
     }
 
@@ -27,30 +25,46 @@ namespace QoL
     {
         static bool Prefix(AddressablesLoadScene __instance)
         {
-            // Get the address field value using reflection
-            var addressField = typeof(AddressablesLoadScene).GetField("address",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            var loadSceneField = typeof(AddressablesLoadScene).GetField("loadScene",
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-
-            if (addressField == null || loadSceneField == null)
+            // address
+            var addressFieldMaybe = typeof(AddressablesLoadScene).GetField(
+                "address",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance
+            );
+            if (!(addressFieldMaybe is System.Reflection.FieldInfo addressField))
             {
-                Debug.LogWarning("QoL Mod: Could not find required fields in AddressablesLoadScene");
+                Debug.LogError("QoL: Failed to get field: address");
+                return true;
+            }
+            var addressMaybe = addressField.GetValue(__instance);
+            if (!(addressMaybe is string address))
+            {
+                Debug.LogError("QoL: The \"address\" field was not a string.");
                 return true;
             }
 
-            var loadScene = loadSceneField.GetValue(__instance) as AssetReference;
-            var address = addressField.GetValue(__instance) as string;
+            // loadScene
+            var loadSceneFieldMaybe = typeof(AddressablesLoadScene).GetField(
+                "loadScene",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance
+            );
+            if (!(loadSceneFieldMaybe is System.Reflection.FieldInfo loadSceneField))
+            {
+                Debug.LogError("QoL: Failed to get field: loadScene");
+                return true;
+            }
+            var loadSceneMaybe = loadSceneField.GetValue(__instance);
+            if (!(loadSceneMaybe is AssetReference loadScene))
+            {
+                Debug.LogError("QoL: The \"address\" field was not an object.");
+                return true;
+            }
 
-            // Check if we have a scene reference or an address
-            bool hasSceneRef = loadScene != null && !string.IsNullOrEmpty(loadScene.AssetGUID);
-
+            // Skip the intro.
+            var hasSceneRef = !string.IsNullOrEmpty(loadScene.AssetGUID);
             if (!hasSceneRef && address == "Scenes/Pre_Menu_Intro")
             {
-                // Skip the intro - load the main menu directly
-                Debug.Log("QoL Mod: Skipping intro, loading main menu directly");
                 Addressables.LoadSceneAsync("Scenes/Menu_Title");
-                return false; // Skip the original Start method
+                return false;
             }
 
             return true;
