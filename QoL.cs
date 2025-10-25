@@ -10,6 +10,7 @@ public class QoL : BaseUnityPlugin
 {
     public static ConfigEntry<bool> SkipIntro { get; private set; } = null!;
     public static ConfigEntry<bool> FastMainMenu { get; private set; } = null!;
+    public static ConfigEntry<bool> BypassMenu { get; private set; } = null!;
 
     private void Awake()
     {
@@ -25,6 +26,13 @@ public class QoL : BaseUnityPlugin
             "FastMenu",
             true,
             "Remove the fading animations on the main menu."
+        );
+
+        BypassMenu = Config.Bind(
+            "General",
+            "BypassMenu",
+            true,
+            "Automatically navigate to the save file selection screen when the main menu loads."
         );
 
         var harmony = new Harmony("io.github.zamiel.qol");
