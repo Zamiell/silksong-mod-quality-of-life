@@ -15,7 +15,7 @@ public class UIManagerStartPatch
     [HarmonyWrapSafe, HarmonyPostfix]
     private static void Postfix(UIManager __instance)
     {
-        if (!QoL.FastMenu.Value)
+        if (!QoL.FastMainMenu.Value)
         {
             return;
         }
@@ -31,7 +31,7 @@ public class UIManagerFadeScreenBlankerToPatch
     [HarmonyWrapSafe, HarmonyPrefix]
     private static void Prefix(ref float duration)
     {
-        if (!QoL.FastMenu.Value)
+        if (!QoL.FastMainMenu.Value)
         {
             return;
         }
@@ -47,7 +47,7 @@ public class UIManagerFadeScreenInPatch
     [HarmonyWrapSafe, HarmonyPostfix]
     private static void Postfix(ref float __result)
     {
-        if (!QoL.FastMenu.Value)
+        if (!QoL.FastMainMenu.Value)
         {
             return;
         }
@@ -62,7 +62,7 @@ public class UIManagerGoToProfileMenuPatch
 {
     private static YieldInstruction ConditionalWait(float seconds)
     {
-        if (QoL.FastMenu.Value)
+        if (QoL.FastMainMenu.Value)
         {
             return null!;
         }
@@ -142,7 +142,7 @@ public class UIManagerHideSaveProfileMenuPatch
     // Takes timeTool as parameter to match the stack layout, but only uses seconds
     private static IEnumerator ConditionalWaitTimeScaleIndependent(object timeTool, float seconds)
     {
-        if (QoL.FastMenu.Value)
+        if (QoL.FastMainMenu.Value)
         {
             yield break; // Skip the wait
         }

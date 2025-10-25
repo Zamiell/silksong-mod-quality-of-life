@@ -9,7 +9,7 @@ namespace QoL;
 public class QoL : BaseUnityPlugin
 {
     public static ConfigEntry<bool> SkipIntro { get; private set; } = null!;
-    public static ConfigEntry<bool> FastMenu { get; private set; } = null!;
+    public static ConfigEntry<bool> FastMainMenu { get; private set; } = null!;
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class QoL : BaseUnityPlugin
             "Skip the intro sequence and load the main menu directly when launching the game."
         );
 
-        FastMenu = Config.Bind(
+        FastMainMenu = Config.Bind(
             "General",
             "FastMenu",
             true,
