@@ -6,10 +6,15 @@ It uses the [BepInExPack for Silksong](https://thunderstore.io/c/hollow-knight-s
 
 ## Features
 
-### 1. Instant Main Menu
+### Skip Intro
 
-- Skips the intro sequence (`Pre_Menu_Intro`).
-- Loads the main menu (`Menu_Title`) instantly when you launch the game.
+- Skips the "Team Cherry" splash screen.
+- Skips the screen that explains to you what the save indicator means.
+
+### Fast Main Menu
+
+- Makes the menu appear instantly (instead of slowly fading in).
+- Makes the save slot screen appear instantly (instead of animating all 4 rectangles one by one).
 
 ## Configuration
 
