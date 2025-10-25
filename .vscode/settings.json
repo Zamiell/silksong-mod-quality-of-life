@@ -45,5 +45,14 @@
   "[css][html][json][jsonc][markdown][postcss][yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
+  },
+
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\.(cs|csproj)$",
+        "cmd": "dotnet build -warnaserror"
+      }
+    ]
   }
 }
