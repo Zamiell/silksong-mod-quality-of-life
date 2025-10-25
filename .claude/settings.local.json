@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Read(//d/Games/PC/Silksong/1.0.28891/**)",
-      "Bash(dotnet build:*)"
+      "Bash(dotnet build:*)",
+      "Bash(dotnet csharpier:*)"
     ],
     "deny": [],
     "ask": []

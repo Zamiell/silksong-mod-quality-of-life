@@ -3,58 +3,33 @@ using BepInEx.Configuration;
 using HarmonyLib;
 using UnityEngine;
 
-namespace QoL
+namespace QoL;
+
+[BepInPlugin("io.github.zamiel.qol", "QoL", "0.0.1")]
+public class QoL : BaseUnityPlugin
 {
-    /// <summary>
-    /// Logging utility that dynamically retrieves the mod name from the BepInPlugin attribute.
-    /// </summary>
-    public static class Log
+    public static ConfigEntry<bool> SkipIntro { get; private set; } = null!;
+    public static ConfigEntry<bool> FastMenu { get; private set; } = null!;
+
+    private void Awake()
     {
-        private static string? _modName = null;
+        SkipIntro = Config.Bind(
+            "General",
+            "SkipIntro",
+            true,
+            "Skip the intro sequence and load the main menu directly when launching the game."
+        );
 
-        private static string ModName
-        {
-            get
-            {
-                if (_modName == null)
-                {
-                    var attribute = (BepInPlugin)
-                        System.Attribute.GetCustomAttribute(typeof(QoL), typeof(BepInPlugin));
-                    _modName = attribute?.Name ?? "Unknown";
-                }
-                return _modName;
-            }
-        }
+        FastMenu = Config.Bind(
+            "General",
+            "FastMenu",
+            true,
+            "Remove the fading animations on the main menu."
+        );
 
-        public static void Info(string message)
-        {
-            Debug.Log($"{ModName}: {message}");
-        }
+        var harmony = new Harmony("io.github.zamiel.qol");
+        harmony.PatchAll();
 
-        public static void Error(string message)
-        {
-            Debug.LogError($"{ModName}: {message}");
-        }
-    }
-
-    [BepInPlugin("io.github.zamiel.qol", "QoL", "0.0.1")]
-    public class QoL : BaseUnityPlugin
-    {
-        public static ConfigEntry<bool> SkipIntro { get; private set; } = null!;
-
-        private void Awake()
-        {
-            SkipIntro = Config.Bind(
-                "General",
-                "SkipIntro",
-                true,
-                "Skip the intro sequence and load the main menu directly when launching the game."
-            );
-
-            var harmony = new Harmony("io.github.zamiel.qol");
-            harmony.PatchAll();
-
-            Log.Info("Loaded.");
-        }
+        Log.Info("Loaded.");
     }
 }
