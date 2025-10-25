@@ -1,8 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Reflection.Emit;
 using HarmonyLib;
+using UnityEngine;
 
 namespace QoL.Features;
 
-// Make the text fade in instantly.
+// Make the menu text fade in instantly.
 [HarmonyPatch(typeof(UIManager), "Start")]
 public class UIManagerStartPatch
 {
@@ -34,7 +40,7 @@ public class UIManagerFadeScreenBlankerToPatch
     }
 }
 
-// Make the main menu text appear instantly. (Normally, it only appears after a second.)
+// Make the menu text appear instantly. (Normally, it only starts fading in after a second.)
 [HarmonyPatch(typeof(UIManager), "FadeScreenIn")]
 public class UIManagerFadeScreenInPatch
 {
@@ -47,5 +53,170 @@ public class UIManagerFadeScreenInPatch
         }
 
         __result = 0f;
+    }
+}
+
+// Make the save slot selection screen appear instantly instead of animating in one by one.
+[HarmonyPatch]
+public class UIManagerGoToProfileMenuPatch
+{
+    private static YieldInstruction ConditionalWait(float seconds)
+    {
+        if (QoL.FastMenu.Value)
+        {
+            return null!;
+        }
+
+        return new WaitForSeconds(seconds);
+    }
+
+    [HarmonyTargetMethod]
+    private static MethodBase TargetMethod()
+    {
+        var method = AccessTools.Method(typeof(UIManager), "GoToProfileMenu");
+        var nestedTypes = typeof(UIManager).GetNestedTypes(
+            BindingFlags.NonPublic | BindingFlags.Instance
+        );
+
+        foreach (var nestedType in nestedTypes)
+        {
+            if (nestedType.Name.Contains("GoToProfileMenu"))
+            {
+                var moveNext = AccessTools.Method(nestedType, "MoveNext");
+                if (moveNext != null)
+                {
+                    return moveNext;
+                }
+            }
+        }
+
+        Log.Error("Could not find MoveNext method for GoToProfileMenu coroutine");
+        return method;
+    }
+
+    [HarmonyWrapSafe, HarmonyTranspiler]
+    private static IEnumerable<CodeInstruction> Transpiler(
+        IEnumerable<CodeInstruction> instructions
+    )
+    {
+        var codes = new List<CodeInstruction>(instructions);
+        var conditionalWaitMethod = AccessTools.Method(
+            typeof(UIManagerGoToProfileMenuPatch),
+            nameof(ConditionalWait)
+        );
+
+        int replacementCount = 0;
+
+        // Replace all "WaitForSeconds(0.165f)" calls with "ConditionalWait(0.165f)".
+        for (int i = 0; i < codes.Count; i++)
+        {
+            // Look for the pattern: ldc.r4 0.165 followed by newobj WaitForSeconds
+            if (i < codes.Count - 1 && codes[i].opcode == OpCodes.Ldc_R4)
+            {
+                if (codes[i].operand is float f && f == 0.165f)
+                {
+                    if (
+                        codes[i + 1].opcode == OpCodes.Newobj
+                        && codes[i + 1].operand is ConstructorInfo ctor
+                        && ctor.DeclaringType?.Name == "WaitForSeconds"
+                    )
+                    {
+                        // Replace newobj WaitForSeconds with call ConditionalWait.
+                        codes[i + 1].opcode = OpCodes.Call;
+                        codes[i + 1].operand = conditionalWaitMethod;
+                        replacementCount++;
+                    }
+                }
+            }
+        }
+
+        return codes.AsEnumerable();
+    }
+}
+
+// Make the save slot selection screen hide instantly when going back.
+[HarmonyPatch]
+public class UIManagerHideSaveProfileMenuPatch
+{
+    // Helper method that conditionally returns a delay - checked at runtime
+    // Takes timeTool as parameter to match the stack layout, but only uses seconds
+    private static IEnumerator ConditionalWaitTimeScaleIndependent(object timeTool, float seconds)
+    {
+        if (QoL.FastMenu.Value)
+        {
+            yield break; // Skip the wait
+        }
+
+        // Call the actual TimeScaleIndependentWaitForSeconds method on the provided timeTool
+        var timeToolType = timeTool.GetType();
+        var method = timeToolType.GetMethod("TimeScaleIndependentWaitForSeconds");
+        if (method != null)
+        {
+            var result = method.Invoke(timeTool, new object[] { seconds }) as IEnumerator;
+            if (result != null)
+            {
+                yield return result;
+            }
+        }
+    }
+
+    // Target the compiler-generated MoveNext method of the coroutine state machine.
+    [HarmonyTargetMethod]
+    private static MethodBase TargetMethod()
+    {
+        var method = AccessTools.Method(typeof(UIManager), "HideSaveProfileMenu");
+
+        // Find the nested compiler-generated class.
+        var nestedTypes = typeof(UIManager).GetNestedTypes(
+            BindingFlags.NonPublic | BindingFlags.Instance
+        );
+        foreach (var nestedType in nestedTypes)
+        {
+            if (nestedType.Name.Contains("HideSaveProfileMenu"))
+            {
+                var moveNext = AccessTools.Method(nestedType, "MoveNext");
+                if (moveNext != null)
+                {
+                    return moveNext;
+                }
+            }
+        }
+
+        Log.Error("Could not find MoveNext method for HideSaveProfileMenu coroutine");
+        return method;
+    }
+
+    [HarmonyWrapSafe, HarmonyTranspiler]
+    private static IEnumerable<CodeInstruction> Transpiler(
+        IEnumerable<CodeInstruction> instructions
+    )
+    {
+        var codes = new List<CodeInstruction>(instructions);
+        var conditionalWaitMethod = AccessTools.Method(
+            typeof(UIManagerHideSaveProfileMenuPatch),
+            nameof(ConditionalWaitTimeScaleIndependent)
+        );
+
+        int replacementCount = 0;
+
+        // Replace all `TimeScaleIndependentWaitForSeconds` calls with our conditional version.
+        for (int i = 0; i < codes.Count; i++)
+        {
+            // Look for calls to `TimeScaleIndependentWaitForSeconds`.
+            if (
+                codes[i].opcode == OpCodes.Callvirt
+                && codes[i].operand is MethodInfo method
+                && method.Name == "TimeScaleIndependentWaitForSeconds"
+            )
+            {
+                // Replace `Callvirt` with `Call` since our method is static.
+                // The stack layout matches [timeTool instance, float] for both methods.
+                codes[i].opcode = OpCodes.Call;
+                codes[i].operand = conditionalWaitMethod;
+                replacementCount++;
+            }
+        }
+
+        return codes.AsEnumerable();
     }
 }

@@ -29,8 +29,10 @@
   ],
   "words": [
     "Addressables",
+    "Callvirt",
     "modman",
     "netstandard",
+    "Newobj",
     "Silksong",
     "steamapps",
     "warnaserror",
