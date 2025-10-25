@@ -138,16 +138,15 @@ public class UIManagerGoToProfileMenuPatch
 [HarmonyPatch]
 public class UIManagerHideSaveProfileMenuPatch
 {
-    // Helper method that conditionally returns a delay - checked at runtime
-    // Takes timeTool as parameter to match the stack layout, but only uses seconds
+    // Takes `timeTool` as parameter to match the stack layout, but only uses seconds.
     private static IEnumerator ConditionalWaitTimeScaleIndependent(object timeTool, float seconds)
     {
         if (QoL.FastMainMenu.Value)
         {
-            yield break; // Skip the wait
+            yield break;
         }
 
-        // Call the actual TimeScaleIndependentWaitForSeconds method on the provided timeTool
+        // Call the actual `TimeScaleIndependentWaitForSeconds` method on the provided `timeTool`.
         var timeToolType = timeTool.GetType();
         var method = timeToolType.GetMethod("TimeScaleIndependentWaitForSeconds");
         if (method != null)
