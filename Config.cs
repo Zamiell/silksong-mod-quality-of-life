@@ -9,6 +9,7 @@ public static class Config
     public static ConfigEntry<bool> BypassMainMenu { get; private set; } = null!;
     public static ConfigEntry<bool> SkipSaveAndQuitConfirmation { get; private set; } = null!;
     public static ConfigEntry<bool> SkipCutscenes { get; private set; } = null!;
+    public static ConfigEntry<bool> HornetQuickStart { get; private set; } = null!;
 
     public static void Initialize(ConfigFile config)
     {
@@ -45,6 +46,13 @@ public static class Config
             "SkipCutscenes",
             true,
             "Automatically skip certain cutscene sequences in the game."
+        );
+
+        HornetQuickStart = config.Bind(
+            "General",
+            "HornetQuickStart",
+            true,
+            "Makes the start of the game instantaneous."
         );
     }
 }
