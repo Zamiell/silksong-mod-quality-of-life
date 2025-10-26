@@ -28,6 +28,10 @@ It uses the [BepInExPack for Silksong](https://thunderstore.io/c/hollow-knight-s
 
 - Skips the "Yes" or "No" confirmation menu that appears after selecting "Save & Quit".
 
+#### Instance Dialog Text
+
+- Makes dialog text with NPCs instantaneous.
+
 ### In-Game Features
 
 #### Skip Cutscenes

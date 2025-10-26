@@ -10,6 +10,8 @@ public static class Config
     public static ConfigEntry<bool> SkipSaveAndQuitConfirmation { get; private set; } = null!;
     public static ConfigEntry<bool> SkipCutscenes { get; private set; } = null!;
     public static ConfigEntry<bool> HornetQuickStart { get; private set; } = null!;
+    public static ConfigEntry<bool> FastText { get; private set; } = null!;
+    public static ConfigEntry<bool> SkipWeakness { get; private set; } = null!;
 
     public static void Initialize(ConfigFile config)
     {
@@ -53,6 +55,15 @@ public static class Config
             "HornetQuickStart",
             true,
             "Makes the start of the game instantaneous."
+        );
+
+        FastText = config.Bind("General", "FastText", true, "Makes dialog text instantaneous.");
+
+        SkipWeakness = config.Bind(
+            "General",
+            "SkipWeakness",
+            true,
+            "Skips the \"weakness\" segments where Hornet moves very slowly."
         );
     }
 }

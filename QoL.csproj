@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Silksong.FsmUtil" Version="0.2.0" />
+    <PackageReference Include="UnityEngine.Modules" Version="6000.0.50" IncludeAssets="compile" />
     <Reference Include="BepInEx">
       <HintPath>C:\Users\james\AppData\Roaming\r2modmanPlus-local\HollowKnightSilksong\profiles\Default\BepInEx\core\BepInEx.dll</HintPath>
     </Reference>

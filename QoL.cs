@@ -1,6 +1,6 @@
 using BepInEx;
 using HarmonyLib;
-using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace QoL;
 
@@ -10,6 +10,8 @@ public class QoL : BaseUnityPlugin
     private void Awake()
     {
         global::QoL.Config.Initialize(Config);
+
+        SceneManager.sceneLoaded += OnSceneLoadPatch.OnSceneLoad;
 
         var harmony = new Harmony("io.github.zamiel.qol");
         harmony.PatchAll();
