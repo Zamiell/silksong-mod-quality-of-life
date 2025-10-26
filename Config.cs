@@ -8,6 +8,7 @@ public static class Config
     public static ConfigEntry<bool> FastMainMenu { get; private set; } = null!;
     public static ConfigEntry<bool> BypassMainMenu { get; private set; } = null!;
     public static ConfigEntry<bool> SkipSaveAndQuitConfirmation { get; private set; } = null!;
+    public static ConfigEntry<bool> SkipCutscenes { get; private set; } = null!;
 
     public static void Initialize(ConfigFile config)
     {
@@ -37,6 +38,13 @@ public static class Config
             "SkipSaveAndQuitConfirmation",
             true,
             "Automatically confirm \"Yes\" when quitting to the main menu, bypassing the confirmation prompt."
+        );
+
+        SkipCutscenes = config.Bind(
+            "General",
+            "SkipCutscenes",
+            true,
+            "Automatically skip certain cutscene sequences in the game."
         );
     }
 }

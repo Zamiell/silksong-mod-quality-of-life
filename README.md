@@ -6,27 +6,37 @@ It uses the [BepInExPack for Silksong](https://thunderstore.io/c/hollow-knight-s
 
 ## Features
 
-### Skip Intro
+### Main Menu Features
+
+#### Skip Intro
 
 - Skips the "Team Cherry" splash screen.
 - Skips the screen that explains to you what the save indicator means.
 
-### Fast Main Menu
+#### Fast Main Menu
 
 - Makes the menu appear instantly (instead of slowly fading in).
 - Makes the save slot screen appear instantly (instead of animating all 4 rectangles one by one).
 
-## Bypass Main Menu
+#### Bypass Main Menu
 
 - Makes the main menu automatically transition to the save file selection screen.
 
-## Skip Save and Quit Confirmation
+### In-Game Menu Features
+
+#### Skip Save and Quit Confirmation
 
 - Skips the "Yes" or "No" confirmation menu that appears after selecting "Save & Quit".
 
+### In-Game Features
+
+#### Skip Cutscenes
+
+- Automatically skips certain cutscene sequences in the game.
+
 ## Configuration
 
-The mod can be configured by editing the configuration file. By default, it is located at:
+Every feature that this mod provides is optional, if you do not like a specific feature, you can disable it by editing the configuration file. By default, it is located at:
 
 ```txt
 C:\Users\[username]\AppData\Roaming\r2modmanPlus-local\HollowKnightSilksong\profiles\Default\BepInEx\config
