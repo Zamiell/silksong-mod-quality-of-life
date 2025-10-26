@@ -31,3 +31,7 @@ The mod can be configured by editing the configuration file. By default, it is l
 ```txt
 C:\Users\[username]\AppData\Roaming\r2modmanPlus-local\HollowKnightSilksong\profiles\Default\BepInEx\config
 ```
+
+## Credits
+
+Also see Vitaxses' excelled [Silksong QoL mod](https://github.com/Vitaxses/Silksong.QoL).
