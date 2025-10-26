@@ -32,11 +32,11 @@ It uses the [BepInExPack for Silksong](https://thunderstore.io/c/hollow-knight-s
 
 #### Skip Cutscenes
 
-- Automatically skips certain cutscene sequences in the game.
+- Automatically skips certain cutscene sequences in the game, including the opening cutscene.
 
 #### Hornet Quick Start
 
-- Makes the start of the game instantaneous.
+- Gives immediate control at the beginning of the game.
 
 ## Configuration
 
