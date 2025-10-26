@@ -13,9 +13,9 @@ public class OpeningSequence_Start_Patch
     [HarmonyWrapSafe, HarmonyPostfix]
     private static IEnumerator Postfix(IEnumerator result, OpeningSequence __instance)
     {
+        // If the feature is disabled, just run the original coroutine.
         if (!Config.SkipCutscenes.Value)
         {
-            // If the feature is disabled, just run the original coroutine.
             while (result.MoveNext())
             {
                 yield return result.Current;
@@ -46,6 +46,51 @@ public class OpeningSequence_Start_Patch
 
             // Wait a bit before trying to skip again.
             yield return new WaitForSeconds(0.1f);
+        }
+    }
+}
+
+/// <summary>
+/// Patch to monitor scene loads and disable Act Card display in Opening_Sequence.
+/// </summary>
+[HarmonyPatch(typeof(UnityEngine.SceneManagement.SceneManager), "Internal_ActiveSceneChanged")]
+public class SceneManager_ActiveSceneChanged_Patch
+{
+    [HarmonyPostfix]
+    private static void Postfix(
+        UnityEngine.SceneManagement.Scene previousActiveScene,
+        UnityEngine.SceneManagement.Scene newActiveScene
+    )
+    {
+        if (!Config.SkipCutscenes.Value)
+        {
+            return;
+        }
+
+        if (newActiveScene.name == "Opening_Sequence")
+        {
+            // Start a coroutine to search for and disable the "Act Card" GameObject.
+            GameManager.instance.StartCoroutine(DisableActCard());
+        }
+    }
+
+    private static System.Collections.IEnumerator DisableActCard()
+    {
+        // Search for the "Act Card" GameObject for up to 15 seconds.
+        float elapsed = 0f;
+
+        while (elapsed < 15f)
+        {
+            // Use GameObject.Find to search for the "Act Card" GameObject by name.
+            var actCard = GameObject.Find("Act Card");
+            if (actCard != null)
+            {
+                actCard.SetActive(false);
+                yield break;
+            }
+
+            yield return new UnityEngine.WaitForSeconds(0.1f);
+            elapsed += 0.1f;
         }
     }
 }
