@@ -16,6 +16,14 @@ It uses the [BepInExPack for Silksong](https://thunderstore.io/c/hollow-knight-s
 - Makes the menu appear instantly (instead of slowly fading in).
 - Makes the save slot screen appear instantly (instead of animating all 4 rectangles one by one).
 
+## Bypass Main Menu
+
+- Makes the main menu automatically transition to the save file selection screen.
+
+## Skip Save and Quit Confirmation
+
+- Skips the "Yes" or "No" confirmation menu that appears after selecting "Save & Quit".
+
 ## Configuration
 
 The mod can be configured by editing the configuration file. By default, it is located at:

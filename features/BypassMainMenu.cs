@@ -17,7 +17,7 @@ public class UIManager_SetMenuState_Patch
     [HarmonyWrapSafe, HarmonyPostfix]
     private static void Postfix(UIManager __instance, MainMenuState newState)
     {
-        if (!QoL.BypassMenu.Value)
+        if (!Config.BypassMainMenu.Value)
         {
             return;
         }

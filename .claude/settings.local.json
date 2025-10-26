@@ -4,7 +4,8 @@
       "Read(//d/Games/PC/Silksong/1.0.28891/**)",
       "Bash(dotnet build:*)",
       "Bash(dotnet csharpier:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(git mv:*)"
     ],
     "deny": [],
     "ask": []
