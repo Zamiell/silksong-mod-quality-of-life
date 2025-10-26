@@ -57,10 +57,7 @@ public class OpeningSequence_Start_Patch
 public class SceneManager_ActiveSceneChanged_Patch
 {
     [HarmonyPostfix]
-    private static void Postfix(
-        UnityEngine.SceneManagement.Scene previousActiveScene,
-        UnityEngine.SceneManagement.Scene newActiveScene
-    )
+    private static void Postfix(in UnityEngine.SceneManagement.Scene newActiveScene)
     {
         if (!Config.SkipCutscenes.Value)
         {
