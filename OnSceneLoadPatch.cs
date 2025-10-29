@@ -9,8 +9,14 @@ internal static class OnSceneLoadPatch
 {
     internal static void OnSceneLoad(Scene scene, LoadSceneMode lsm)
     {
+        LogSceneChange(scene, lsm);
         SkipWeakness(scene.name);
         SkipChapelMaidIntro(scene.name);
+    }
+
+    public static void LogSceneChange(Scene scene, LoadSceneMode mode)
+    {
+        Log.Info($"Scene loaded: {scene.name} (Mode: {mode})");
     }
 
     private static void SkipWeakness(string sceneName)

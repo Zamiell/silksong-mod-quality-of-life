@@ -1,3 +1,6 @@
+using HarmonyLib;
+
 namespace QoL.Features;
 
-public class HornetQuickStart { }
+[HarmonyPatch(typeof(PlayMakerFSM), "SendEvent", typeof(string))]
+public class PlayMakerFSM_SendEvent_Patch { }
