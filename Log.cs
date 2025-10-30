@@ -26,11 +26,19 @@ public static class Log
 
     public static void Info(string message)
     {
-        Debug.Log($"{ModName}: {message}");
+        var msg = GetFormattedLogMessage(message);
+        Debug.Log(msg);
     }
 
     public static void Error(string message)
     {
-        Debug.LogError($"{ModName}: {message}");
+        var msg = GetFormattedLogMessage(message);
+        Debug.LogError(msg);
+    }
+
+    private static string GetFormattedLogMessage(String message)
+    {
+        var timestamp = System.DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff");
+        return $"[{timestamp}] {ModName}: {message}";
     }
 }

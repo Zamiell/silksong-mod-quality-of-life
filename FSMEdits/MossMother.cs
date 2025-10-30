@@ -19,103 +19,59 @@ internal static class MossMother
 
     internal static void SpeedUp(PlayMakerFSM fsm)
     {
-        if (fsm is not { gameObject.name: "Mossbone Mother", FsmName: "Control" })
+        if (fsm is { gameObject.name: "Mossbone Mother", FsmName: "Control" })
         {
-            return;
+            fsm.ChangeTransition("Burst Out", "FINISHED", "Roar End");
         }
 
-        Log.Info($"Speeding up Moss Mother intro sequence");
-
-        var animator = fsm.gameObject.GetComponent<tk2dSpriteAnimator>();
-        float[]? originalFps = null;
-
-        // Speed up the tk2dSpriteAnimator if available.
-        if (animator?.Library?.clips != null)
+        if (fsm is { gameObject.name: "Mossbone Mother Corpse(Clone)", FsmName: "Death" })
         {
-            // Store original FPS values so we can restore them later.
-            originalFps = new float[animator.Library.clips.Length];
-            for (int i = 0; i < animator.Library.clips.Length; i++)
-            {
-                var clip = animator.Library.clips[i];
-                if (clip != null)
-                {
-                    originalFps[i] = clip.fps;
-                    clip.fps *= SpeedMultiplier;
-                }
-            }
-
-            Log.Info("Sped up Moss Mother animation");
+            fsm.ChangeTransition("Stagger", "FINISHED", "Blow");
         }
-
-        // Iterate through intro states and speed up timing actions.
-        if (fsm.Fsm?.States == null)
-        {
-            return;
-        }
-
-        foreach (var state in fsm.Fsm.States)
-        {
-            if (state?.Actions == null || state.Name == null)
-            {
-                continue;
-            }
-
-            // Only modify intro states.
-            bool isIntroState = false;
-            foreach (var introState in IntroStates)
-            {
-                if (state.Name == introState)
-                {
-                    isIntroState = true;
-                    break;
-                }
-            }
-
-            if (!isIntroState)
-            {
-                continue;
-            }
-
-            for (int i = 0; i < state.Actions.Length; i++)
-            {
-                var action = state.Actions[i];
-
-                // Speed up Wait actions.
-                if (action is Wait wait)
-                {
-                    wait.time.Value /= SpeedMultiplier;
-                }
-                // Speed up RandomWait actions.
-                else if (action is RandomWait randomWait)
-                {
-                    randomWait.min.Value /= SpeedMultiplier;
-                    randomWait.max.Value /= SpeedMultiplier;
-                }
-            }
-        }
-
-        // Add a method to restore animation speed when entering Idle state.
-        if (animator?.Library?.clips != null && originalFps != null)
-        {
-            fsm.InsertMethod(
-                "Idle",
-                0,
-                (_) =>
-                {
-                    // Restore original animation speeds.
-                    for (int i = 0; i < animator.Library.clips.Length; i++)
-                    {
-                        var clip = animator.Library.clips[i];
-                        if (clip != null && i < originalFps.Length)
-                        {
-                            clip.fps = originalFps[i];
-                        }
-                    }
-                    Log.Info("Restored Moss Mother animation speeds");
-                }
-            );
-        }
-
-        Log.Info($"Finished speeding up Moss Mother intro sequence");
     }
 }
+
+/*
+
+This is the normal sequence for Moss Mother:
+
+```
+[Info   : Unity Log] QoL: [FSM State] Mossbone Mother :: Control -> Dormant
+[Info   : Unity Log] QoL: [FSM State] Mossbone Mother :: Control -> Start Battle
+[Info   : Unity Log] QoL: [FSM State] Mossbone Mother :: Control -> Short Pause
+[Info   : Unity Log] QoL: [FSM State] Mossbone Mother :: Control -> Rumble
+[Info   : Unity Log] QoL: [FSM State] Mossbone Mother :: Control -> Burst Out
+[Info   : Unity Log] QoL: [FSM State] Mossbone Mother :: Control -> Roar
+[Info   : Unity Log] QoL: [FSM State] Mossbone Mother :: Control -> Reset Bind Prompt?
+[Info   : Unity Log] QoL: [FSM State] Mossbone Mother :: Control -> Roar End
+[Info   : Unity Log] QoL: [FSM State] Mossbone Mother :: Control -> Idle
+```
+
+This is the normal sequence for the corpse:
+
+```
+[Info   : Unity Log] [2025-10-30 17:05:37.033] QoL: [FSM State] Mossbone Mother Corpse(Clone) :: Death -> Stagger
+[Info   : Unity Log] [2025-10-30 17:05:38.578] QoL: [FSM State] Mossbone Mother Corpse(Clone) :: Death -> Steam
+[Info   : Unity Log] [2025-10-30 17:05:42.125] QoL: [FSM State] Mossbone Mother Corpse(Clone) :: Death -> Blow
+```
+
+This is the normal sequence for the green vines that block the boss arena exit:
+
+```
+[Info   : Unity Log] [2025-10-30 17:05:32.531] QoL: [FSM State] Battle Gate Mossbone :: BG Control -> Close
+[Info   : Unity Log] [2025-10-30 17:05:32.533] QoL: [FSM State] Battle Gate Mossbone (1) :: BG Control -> Close
+[Info   : Unity Log] [2025-10-30 17:05:32.843] QoL: [FSM State] Battle Gate Mossbone (1) :: BG Control -> Closed
+[Info   : Unity Log] [2025-10-30 17:05:32.844] QoL: [FSM State] Battle Gate Mossbone :: BG Control -> Closed
+[Info   : Unity Log] [2025-10-30 17:05:39.727] QoL: [FSM State] Battle Gate Mossbone (1) :: BG Control -> Tinked
+[Info   : Unity Log] [2025-10-30 17:05:39.728] QoL: [FSM State] Battle Gate Mossbone (1) :: BG Control -> Closed
+[Info   : Unity Log] [2025-10-30 17:05:40.181] QoL: [FSM State] Battle Gate Mossbone (1) :: BG Control -> Tinked
+[Info   : Unity Log] [2025-10-30 17:05:40.182] QoL: [FSM State] Battle Gate Mossbone (1) :: BG Control -> Closed
+[Info   : Unity Log] [2025-10-30 17:05:40.581] QoL: [FSM State] Battle Gate Mossbone (1) :: BG Control -> Tinked
+[Info   : Unity Log] [2025-10-30 17:05:40.582] QoL: [FSM State] Battle Gate Mossbone (1) :: BG Control -> Closed
+[Info   : Unity Log] [2025-10-30 17:05:48.486] QoL: [FSM State] Battle Gate Mossbone :: BG Control -> Open
+[Info   : Unity Log] [2025-10-30 17:05:48.488] QoL: [FSM State] Battle Gate Mossbone (1) :: BG Control -> Open
+[Info   : Unity Log] [2025-10-30 17:05:48.747] QoL: [FSM State] Battle Gate Mossbone :: BG Control -> Opened
+[Info   : Unity Log] [2025-10-30 17:05:48.749] QoL: [FSM State] Battle Gate Mossbone (1) :: BG Control -> Opened
+```
+
+*/

@@ -14,8 +14,6 @@ internal static class ShrineWeaverAbility
             return;
         }
 
-        Log.Info("Skipping Shrine Weaver Ability cutscene");
-
         fsm.ChangeTransition("Look Back", "FINISHED", "Auto Equip");
         fsm.ChangeTransition("Auto Equip", "FINISHED", "Heal");
         fsm.ChangeTransition("Heal", "FINISHED", "Get Up");

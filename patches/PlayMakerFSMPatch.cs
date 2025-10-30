@@ -7,8 +7,10 @@ internal static class PlayMakerFSMPatch
 {
     private static readonly Action<PlayMakerFSM>[] edits =
     [
+        // Bosses
+        MossMother.SpeedUp,
+        // Other
         ShrineWeaverAbility.Skip,
-        // MossMother.SpeedUp
     ];
 
     [HarmonyPostfix]
