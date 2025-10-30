@@ -67,7 +67,6 @@ Also see Vitaxses' excelled [Silksong QoL mod](https://github.com/Vitaxses/Silks
 
 ## TODO
 
-- Fix the `DebugNeedleDamage` feature.
 - Automatically grant Silk Spear upon reading the thing.
   - `hasNeedleThrow = True`
   - `hasSilkSpecial = True`
