@@ -91,3 +91,20 @@ public class SceneManager_ActiveSceneChanged_Patch
         }
     }
 }
+
+/// <summary>
+/// Patch to skip the cutscene where you meet the Church Maid.
+/// </summary>
+[HarmonyPatch(typeof(GameManager), "StartNewGame")]
+public class GameManager_StartNewGame_Patch_2
+{
+    static void Postfix()
+    {
+        if (!Config.HornetQuickStart.Value)
+        {
+            return;
+        }
+
+        PlayerData.instance.churchKeeperIntro = true;
+    }
+}
