@@ -110,9 +110,6 @@ public class GameManager_StartNewGame_Patch_2
 
         // Skips Shakra talking to you for the first time in The Marrow.
         PlayerData.instance.metMapper = true; //
-
-        // Makes the Moss Mother fight start slightly faster.
-        PlayerData.instance.encounteredMossMother = true;
     }
 }
 

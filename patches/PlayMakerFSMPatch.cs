@@ -5,7 +5,10 @@ namespace QoL.Patches;
 [HarmonyPatch(typeof(PlayMakerFSM), nameof(PlayMakerFSM.Start))]
 internal static class PlayMakerFSMPatch
 {
-    private static readonly Action<PlayMakerFSM>[] edits = [MossMother.SpeedUp];
+    private static readonly Action<PlayMakerFSM>[] edits =
+    [
+        // MossMother.SpeedUp
+    ];
 
     [HarmonyPostfix]
     private static void Postfix(PlayMakerFSM __instance)

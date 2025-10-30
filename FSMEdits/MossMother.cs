@@ -4,7 +4,7 @@ namespace QoL.FSMEdits;
 
 internal static class MossMother
 {
-    private const float SpeedMultiplier = 5f;
+    private const float SpeedMultiplier = 2f;
 
     // Intro sequence states that should be sped up.
     private static readonly string[] IntroStates =
