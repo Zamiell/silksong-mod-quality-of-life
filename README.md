@@ -68,4 +68,14 @@ Also see Vitaxses' excelled [Silksong QoL mod](https://github.com/Vitaxses/Silks
 ## TODO
 
 - Fix the `DebugNeedleDamage` feature.
-- Open the Moss Mother doors faster after she dies.
+- Automatically grant Silk Spear upon reading the thing.
+  - `hasNeedleThrow = True`
+  - `hasSilkSpecial = True`
+- Boss stuff:
+  - Moss Mother intro
+  - Moss Mother death animation
+  - Open the Moss Mother doors faster after she dies.
+  - Bell Beast intro
+  - Bell Beast death animation
+- Speed up grabbing silk heart into cutscene
+  - Set `UnlockedFastTravel` after getting silk heart to avoid roaring cutscene when walking to the right
