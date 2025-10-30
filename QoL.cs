@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 namespace QoL;
 
 [BepInPlugin("io.github.zamiel.qol", "QoL", "0.0.1")]
+[BepInDependency("org.silksong-modding.fsmutil", BepInDependency.DependencyFlags.HardDependency)]
 public class QoL : BaseUnityPlugin
 {
     private void Awake()
