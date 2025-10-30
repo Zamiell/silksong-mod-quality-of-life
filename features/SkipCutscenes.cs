@@ -106,6 +106,7 @@ public class GameManager_StartNewGame_Patch_2
         }
 
         PlayerData.instance.churchKeeperIntro = true; // Chapel Maid "weakness" cutscene
+        PlayerData.instance.metMapper = true; // Shakra in The Marrow
     }
 }
 
