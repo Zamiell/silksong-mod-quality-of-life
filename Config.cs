@@ -33,7 +33,7 @@ public static class Config
         );
         FastMainMenu = config.Bind(
             "General",
-            "FastMenu",
+            "FastMainMenu",
             true,
             "Remove the fading animations on the main menu."
         );
