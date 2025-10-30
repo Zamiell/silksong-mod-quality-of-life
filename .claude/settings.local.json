@@ -6,7 +6,9 @@
       "Bash(dotnet csharpier:*)",
       "Bash(find:*)",
       "Bash(git mv:*)",
-      "Read(//d/Repositories/Silksong.QoL/**)"
+      "Read(//d/Repositories/Silksong.QoL/**)",
+      "Bash(cat:*)",
+      "Bash(md5sum:*)"
     ],
     "deny": [],
     "ask": []

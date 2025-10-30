@@ -21,6 +21,7 @@ public static class Config
 
     // Debug Features
     public static ConfigEntry<bool> DebugNeedleDamage { get; private set; } = null!;
+    public static ConfigEntry<bool> LogFSMDetails { get; private set; } = null!;
 
     public static void Initialize(ConfigFile config)
     {
@@ -81,10 +82,16 @@ public static class Config
 
         // Debug Features
         DebugNeedleDamage = config.Bind(
-            "General",
+            "Debug",
             "DebugNeedleDamage",
             false,
             "Makes Hornet's needle deal 999 damage on each swing."
+        );
+        LogFSMDetails = config.Bind(
+            "Debug",
+            "LogFSMDetails",
+            false,
+            "Log detailed information about all FSMs (Finite State Machines) that are initialized. Useful for finding FSM names and game object names for modding."
         );
     }
 }

@@ -105,8 +105,14 @@ public class GameManager_StartNewGame_Patch_2
             return;
         }
 
-        PlayerData.instance.churchKeeperIntro = true; // Chapel Maid "weakness" cutscene
-        PlayerData.instance.metMapper = true; // Shakra in The Marrow
+        // Skips the Chapel Maid "weakness" cutscene.
+        PlayerData.instance.churchKeeperIntro = true;
+
+        // Skips Shakra talking to you for the first time in The Marrow.
+        PlayerData.instance.metMapper = true; //
+
+        // Makes the Moss Mother fight start slightly faster.
+        PlayerData.instance.encounteredMossMother = true;
     }
 }
 
