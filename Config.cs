@@ -4,33 +4,39 @@ namespace QoL;
 
 public static class Config
 {
+    // Main Menu Features
     public static ConfigEntry<bool> SkipIntro { get; private set; } = null!;
     public static ConfigEntry<bool> FastMainMenu { get; private set; } = null!;
     public static ConfigEntry<bool> BypassMainMenu { get; private set; } = null!;
+
+    // In-Game Menu Features
     public static ConfigEntry<bool> SkipSaveAndQuitConfirmation { get; private set; } = null!;
-    public static ConfigEntry<bool> SkipCutscenes { get; private set; } = null!;
-    public static ConfigEntry<bool> HornetQuickStart { get; private set; } = null!;
-    public static ConfigEntry<bool> SkipAreaIntro { get; private set; } = null!;
     public static ConfigEntry<bool> FastText { get; private set; } = null!;
+
+    // In-Game Features
+    public static ConfigEntry<bool> SkipCutscenes { get; private set; } = null!;
+    public static ConfigEntry<bool> SkipAreaIntro { get; private set; } = null!;
+    public static ConfigEntry<bool> HornetQuickStart { get; private set; } = null!;
     public static ConfigEntry<bool> SkipWeakness { get; private set; } = null!;
+
+    // Debug Features
     public static ConfigEntry<bool> DebugNeedleDamage { get; private set; } = null!;
 
     public static void Initialize(ConfigFile config)
     {
+        // Main Menu Features
         SkipIntro = config.Bind(
             "General",
             "SkipIntro",
             true,
             "Skip the intro sequence and load the main menu directly when launching the game."
         );
-
         FastMainMenu = config.Bind(
             "General",
             "FastMenu",
             true,
             "Remove the fading animations on the main menu."
         );
-
         BypassMainMenu = config.Bind(
             "General",
             "BypassMainMenu",
@@ -38,36 +44,34 @@ public static class Config
             "Automatically navigate to the save file selection screen when the main menu loads."
         );
 
+        // In-Game Menu Features
         SkipSaveAndQuitConfirmation = config.Bind(
             "General",
             "SkipSaveAndQuitConfirmation",
             true,
             "Automatically confirm \"Yes\" when quitting to the main menu, bypassing the confirmation prompt."
         );
+        FastText = config.Bind("General", "FastText", true, "Makes dialog text instantaneous.");
 
+        // In-Game Features
         SkipCutscenes = config.Bind(
             "General",
             "SkipCutscenes",
             true,
             "Automatically skip certain cutscene sequences in the game."
         );
-
-        HornetQuickStart = config.Bind(
-            "General",
-            "HornetQuickStart",
-            true,
-            "Makes the start of the game instantaneous."
-        );
-
         SkipAreaIntro = config.Bind(
             "General",
             "SkipAreaIntro",
             true,
             "Mark all areas as visited to skip area intro screens."
         );
-
-        FastText = config.Bind("General", "FastText", true, "Makes dialog text instantaneous.");
-
+        HornetQuickStart = config.Bind(
+            "General",
+            "HornetQuickStart",
+            true,
+            "Makes the start of the game instantaneous."
+        );
         SkipWeakness = config.Bind(
             "General",
             "SkipWeakness",
@@ -75,6 +79,7 @@ public static class Config
             "Skips the \"weakness\" segments where Hornet moves very slowly."
         );
 
+        // Debug Features
         DebugNeedleDamage = config.Bind(
             "General",
             "DebugNeedleDamage",

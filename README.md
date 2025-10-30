@@ -28,7 +28,7 @@ Under the hood, it uses the [BepInExPack for Silksong](https://thunderstore.io/c
 
 - Skips the "Yes" or "No" confirmation menu that appears after selecting "Save & Quit".
 
-#### Instance Dialog Text
+#### Fast Text
 
 - Makes dialog text with NPCs instantaneous.
 
@@ -38,13 +38,13 @@ Under the hood, it uses the [BepInExPack for Silksong](https://thunderstore.io/c
 
 - Automatically skips certain cutscene sequences in the game, including the opening cutscene.
 
-#### Hornet Quick Start
-
-- Gives immediate control at the beginning of the game.
-
 #### Skip Area Intro
 
 - Marks all areas as visited to skip the splash text that appears when you first visit an area.
+
+#### Hornet Quick Start
+
+- Gives immediate control at the beginning of the game.
 
 ### Debug Features
 
@@ -67,4 +67,5 @@ Also see Vitaxses' excelled [Silksong QoL mod](https://github.com/Vitaxses/Silks
 
 ## TODO
 
-- Open
+- Fix the `DebugNeedleDamage` feature.
+- Open the Moss Mother doors faster after she dies.
