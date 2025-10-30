@@ -7,6 +7,7 @@ internal static class PlayMakerFSMPatch
 {
     private static readonly Action<PlayMakerFSM>[] edits =
     [
+        ShrineWeaverAbility.Skip,
         // MossMother.SpeedUp
     ];
 

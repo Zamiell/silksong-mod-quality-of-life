@@ -21,6 +21,7 @@ public static class Config
 
     // Debug Features
     public static ConfigEntry<bool> DebugNeedleDamage { get; private set; } = null!;
+    public static ConfigEntry<bool> DebugWarp { get; private set; } = null!;
     public static ConfigEntry<bool> LogFSMDetails { get; private set; } = null!;
 
     public static void Initialize(ConfigFile config)
@@ -86,6 +87,12 @@ public static class Config
             "DebugNeedleDamage",
             false,
             "Makes Hornet's needle deal 999 damage on each swing."
+        );
+        DebugWarp = config.Bind(
+            "Debug",
+            "DebugWarp",
+            false,
+            "Warp to the Tut_01 scene upon loading into the game."
         );
         LogFSMDetails = config.Bind(
             "Debug",

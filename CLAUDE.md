@@ -9,6 +9,7 @@
 - After editing a file, make sure that the project still successfully compiles with: `dotnet build -warnaserror`
 - After editing a file, make sure that it is formatted with: `dotnet csharpier format .`
 - After adding a new feature, make sure it is documented in the "README.md" file.
+- If the feature name is not specified by the user, assume that it is part of the "SkipCutscenes" feature.
 
 ## Dealing with Errors
 

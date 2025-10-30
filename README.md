@@ -37,6 +37,7 @@ Under the hood, it uses the [BepInExPack for Silksong](https://thunderstore.io/c
 #### Skip Cutscenes
 
 - Automatically skips certain cutscene sequences in the game, including the opening cutscene.
+- Instantly grants abilities at Shrine Weaver locations by skipping the interaction sequence, dialogue, and animations.
 
 #### Skip Area Intro
 
@@ -51,6 +52,11 @@ Under the hood, it uses the [BepInExPack for Silksong](https://thunderstore.io/c
 #### Debug Needle Damage
 
 - Makes Hornet's needle deal 999 damage on each swing.
+- This feature is disabled by default. Enable it in the configuration file for debugging or testing purposes.
+
+#### Debug Warp
+
+- Warps to a specific scene upon loading into the game. (Edit "DebugWarp.cs" to specify the scene.)
 - This feature is disabled by default. Enable it in the configuration file for debugging or testing purposes.
 
 ## Configuration
