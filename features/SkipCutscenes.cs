@@ -93,7 +93,7 @@ public class SceneManager_ActiveSceneChanged_Patch
 }
 
 /// <summary>
-/// Patch to skip the cutscene where you meet the Church Maid.
+/// Patch to skip certain cutscenes by setting save file flags.
 /// </summary>
 [HarmonyPatch(typeof(GameManager), "StartNewGame")]
 public class GameManager_StartNewGame_Patch_2
@@ -105,6 +105,72 @@ public class GameManager_StartNewGame_Patch_2
             return;
         }
 
-        PlayerData.instance.churchKeeperIntro = true;
+        PlayerData.instance.churchKeeperIntro = true; // Chapel Maid "weakness" cutscene
+    }
+}
+
+/// <summary>
+/// Patch to automatically skip certain cutscene scenes when they are loaded.
+/// </summary>
+[HarmonyPatch(typeof(CutsceneHelper), "Start")]
+public class CutsceneHelper_Start_Patch
+{
+    private static readonly string[] CutscenesToSkip =
+    {
+        // "Bone_East_Umbrella",
+        // "Belltown",
+        // "Room_Pinstress",
+        // "Belltown_Room_pinsmith",
+        // "Belltown_Room_doctor",
+        // "End_Credits_Scroll",
+        // "End_Credits",
+        // "Menu_Credits",
+        // "End_Game_Completion",
+        // "PermaDeath",
+        // "Bellway_City",
+        // "City_Lace_cutscene",
+    };
+
+    [HarmonyWrapSafe, HarmonyPostfix]
+    private static IEnumerator Postfix(IEnumerator result, CutsceneHelper __instance)
+    {
+        if (!Config.SkipCutscenes.Value)
+        {
+            // If the feature is disabled, just run the original coroutine.
+            while (result.MoveNext())
+            {
+                yield return result.Current;
+            }
+            yield break;
+        }
+
+        string currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        bool shouldSkip = false;
+
+        foreach (string sceneName in CutscenesToSkip)
+        {
+            if (currentScene == sceneName)
+            {
+                shouldSkip = true;
+                break;
+            }
+        }
+
+        if (shouldSkip)
+        {
+            // Wait for one frame to let the scene initialize.
+            yield return null;
+
+            // Skip the cutscene immediately.
+            yield return __instance.Skip();
+        }
+        else
+        {
+            // If not a scene we want to skip, run the original coroutine.
+            while (result.MoveNext())
+            {
+                yield return result.Current;
+            }
+        }
     }
 }

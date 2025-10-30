@@ -16,11 +16,6 @@ public class GameManager_StartNewGame_Patch
         // Skip the long cutscene at the beginning of the game that teaches you how to bind (heal).
         PlayerData.instance.bindCutscenePlayed = true;
 
-        // We also have to set the respawn fields, or else Hornet will enter the area from the top
-        // as if she had come from Bone Bottom.
-        PlayerData.instance.respawnScene = "Tut_01";
-        PlayerData.instance.respawnMarkerName = "Death Respawn Marker Init";
-
         // Skip the opening credits from appearing in the corner of the screen.
         PlayerData.instance.openingCreditsPlayed = true;
     }

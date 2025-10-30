@@ -1,8 +1,8 @@
-# Quality of Life Mod
+# The Silksong Racing Mod
 
-This is a [Hollow Knight: Silksong](https://hollowknightsilksong.com/) mod that removes all waiting.
+This is a [Hollow Knight: Silksong](https://hollowknightsilksong.com/) mod that removes all waiting. It is designed as a quality of life mod for people wanting to practice the game casually or race each other in a head-to-head speedrun.
 
-It uses the [BepInExPack for Silksong](https://thunderstore.io/c/hollow-knight-silksong/p/BepInEx/BepInExPack_Silksong/) to change the functionality of the game.
+Under the hood, it uses the [BepInExPack for Silksong](https://thunderstore.io/c/hollow-knight-silksong/p/BepInEx/BepInExPack_Silksong/) to change the functionality of the game.
 
 ## Features
 
@@ -42,6 +42,17 @@ It uses the [BepInExPack for Silksong](https://thunderstore.io/c/hollow-knight-s
 
 - Gives immediate control at the beginning of the game.
 
+#### Skip Area Intro
+
+- Marks all areas as visited to skip the splash text that appears when you first visit an area.
+
+### Debug Features
+
+#### Debug Needle Damage
+
+- Makes Hornet's needle deal 999 damage on each swing.
+- This feature is disabled by default. Enable it in the configuration file for debugging or testing purposes.
+
 ## Configuration
 
 Every feature that this mod provides is optional, if you do not like a specific feature, you can disable it by editing the configuration file. By default, it is located at:
@@ -53,3 +64,7 @@ C:\Users\[username]\AppData\Roaming\r2modmanPlus-local\HollowKnightSilksong\prof
 ## Credits
 
 Also see Vitaxses' excelled [Silksong QoL mod](https://github.com/Vitaxses/Silksong.QoL).
+
+## TODO
+
+- Open

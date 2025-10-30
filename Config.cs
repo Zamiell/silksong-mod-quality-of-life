@@ -10,8 +10,10 @@ public static class Config
     public static ConfigEntry<bool> SkipSaveAndQuitConfirmation { get; private set; } = null!;
     public static ConfigEntry<bool> SkipCutscenes { get; private set; } = null!;
     public static ConfigEntry<bool> HornetQuickStart { get; private set; } = null!;
+    public static ConfigEntry<bool> SkipAreaIntro { get; private set; } = null!;
     public static ConfigEntry<bool> FastText { get; private set; } = null!;
     public static ConfigEntry<bool> SkipWeakness { get; private set; } = null!;
+    public static ConfigEntry<bool> DebugNeedleDamage { get; private set; } = null!;
 
     public static void Initialize(ConfigFile config)
     {
@@ -57,6 +59,13 @@ public static class Config
             "Makes the start of the game instantaneous."
         );
 
+        SkipAreaIntro = config.Bind(
+            "General",
+            "SkipAreaIntro",
+            true,
+            "Mark all areas as visited to skip area intro screens."
+        );
+
         FastText = config.Bind("General", "FastText", true, "Makes dialog text instantaneous.");
 
         SkipWeakness = config.Bind(
@@ -64,6 +73,13 @@ public static class Config
             "SkipWeakness",
             true,
             "Skips the \"weakness\" segments where Hornet moves very slowly."
+        );
+
+        DebugNeedleDamage = config.Bind(
+            "General",
+            "DebugNeedleDamage",
+            false,
+            "Makes Hornet's needle deal 999 damage on each swing."
         );
     }
 }
