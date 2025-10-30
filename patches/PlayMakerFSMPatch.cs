@@ -10,7 +10,6 @@ internal static class PlayMakerFSMPatch
     [HarmonyPostfix]
     private static void Postfix(PlayMakerFSM __instance)
     {
-        // Log FSM details if enabled in config OR if it's a Mother/Moss FSM.
         if (Config.LogFSMDetails.Value)
         {
             // LogFSMInfo(__instance);
