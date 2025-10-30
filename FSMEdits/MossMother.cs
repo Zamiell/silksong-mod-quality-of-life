@@ -1,32 +1,34 @@
-using HutongGames.PlayMaker.Actions;
-
 namespace QoL.FSMEdits;
 
 internal static class MossMother
 {
-    private const float SpeedMultiplier = 2f;
-
-    // Intro sequence states that should be sped up.
-    private static readonly string[] IntroStates =
-    {
-        "Return Pause",
-        "Return Antic",
-        "Return In",
-        "Roar",
-        "Reset Bind Prompt?",
-        "Roar End",
-    };
-
     internal static void SpeedUp(PlayMakerFSM fsm)
     {
+        // Skip the intro roar sequence.
         if (fsm is { gameObject.name: "Mossbone Mother", FsmName: "Control" })
         {
             fsm.ChangeTransition("Burst Out", "FINISHED", "Roar End");
         }
 
+        // Open the gates immediately once Moss Mother explodes.
         if (fsm is { gameObject.name: "Mossbone Mother Corpse(Clone)", FsmName: "Death" })
         {
-            fsm.ChangeTransition("Stagger", "FINISHED", "Blow");
+            fsm.AddMethod(
+                "Blow",
+                (_) =>
+                {
+                    var allFSMs = UObject.FindObjectsByType<PlayMakerFSM>(FindObjectsSortMode.None);
+                    var gates = allFSMs.Where(f =>
+                        f.gameObject.name.Contains("Battle Gate Mossbone")
+                        && f.FsmName == "BG Control"
+                    );
+
+                    foreach (var gate in gates)
+                    {
+                        gate.SetState("Open");
+                    }
+                }
+            );
         }
     }
 }

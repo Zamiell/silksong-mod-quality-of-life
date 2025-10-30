@@ -1,5 +1,3 @@
-using HarmonyLib;
-
 namespace QoL.Features;
 
 [HarmonyPatch(typeof(PlayerData), "nailDamage", MethodType.Getter)]

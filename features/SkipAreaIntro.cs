@@ -1,5 +1,3 @@
-using HarmonyLib;
-
 namespace QoL.Features;
 
 // Mark all main areas as visited to skip area intro screens.

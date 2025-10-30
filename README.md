@@ -2,7 +2,7 @@
 
 This is a [Hollow Knight: Silksong](https://hollowknightsilksong.com/) mod that removes all waiting. It is designed as a quality of life mod for people wanting to practice the game casually or race each other in a head-to-head speedrun.
 
-Under the hood, it uses the [BepInExPack for Silksong](https://thunderstore.io/c/hollow-knight-silksong/p/BepInEx/BepInExPack_Silksong/) to change the functionality of the game.
+Under the hood, it uses the [BepInExPack for Silksong](https://thunderstore.io/c/hollow-knight-silksong/p/BepInEx/BepInExPack_Silksong/) to hook C# functions and [Silksong.FsmUtil](https://github.com/silksong-modding/Silksong.FsmUtil) to edit FSM logic.
 
 ## Features
 
