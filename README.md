@@ -86,7 +86,7 @@ C:\Users\[username]\AppData\Roaming\r2modmanPlus-local\HollowKnightSilksong\prof
 
 ## Credits
 
-Also see Vitaxses' excellent [Silksong QoL mod](https://github.com/Vitaxses/Silksong.QoL).
+A lot of code in this mod was based on code in Vitaxses' excellent [Silksong QoL mod](https://github.com/Vitaxses/Silksong.QoL).
 
 ## TODO
 
