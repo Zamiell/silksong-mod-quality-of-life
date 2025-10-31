@@ -68,7 +68,7 @@ This is the main feature of the mod. Many things in the game are sped up or remo
 #### Debug Warp
 
 - Warps to a specific scene upon loading into the game. Specify the scene name in the configuration file to enable warping, or leave it empty to disable the feature.
-- This feature is disabled by default. To enable it, set the "DebugWarp" value to a scene name in the configuration file (e.g. "Mosstown_02").
+- This feature is disabled by default. To enable it, set the "DebugWarp" value to a scene name in the configuration file (e.g. "Tut_01").
 
 #### Log FSM Details
 
