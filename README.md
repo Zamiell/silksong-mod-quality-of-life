@@ -69,6 +69,7 @@ This is the main feature of the mod. Many things in the game are sped up or remo
 
 - Warps to a specific scene upon loading into the game. Specify the scene name in the configuration file to enable warping, or leave it empty to disable the feature.
 - This feature is disabled by default. To enable it, set the "DebugWarp" value to a scene name in the configuration file (e.g. "Tut_01").
+  - You can find the scene name that corresponds to an area by [looking at this map](https://raw.githubusercontent.com/Zamiell/silksong-racing-mod/main/misc/map.png) (which was created by [Zigmatism](https://discord.com/channels/330095365179310091/1418588967447826522/1422744618180546660)).
 
 #### Log FSM Details
 
