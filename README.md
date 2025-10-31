@@ -39,9 +39,13 @@ Under the hood, it uses the [BepInExPack for Silksong](https://thunderstore.io/c
 This is the main feature of the mod. Many things in the game are sped up or removed:
 
 - The opening cutscene is removed. (New games start with Hornet lying on the ground.)
-- The "bind cutscene" is replaced with the normal "wake up" animation that happens after loading a save from a Weaver Shrine.
-- The Chapel Maid "weakness" cutscene is skipped (by setting `churchKeeperIntro` to true).
-- The initial Shakra conversation is skipped (by setting `metMapper` to true).
+- The "bind cutscene" that teaches you how to bind at the beginning of the game is replaced with the normal "wake up" animation. (This is the animation that would play if you saved and quit and reloaded the game after watching the bind cutscene.)
+- NPCs:
+  - The Chapel Maid conversation is skipped (by setting `churchKeeperIntro` to true).
+  - The initial Shakra conversation is skipped (by setting `metMapper` to true).
+- Bosses:
+  - The Moss Mother roar that is part of her introduction sequence is skipped.
+  - The Moss Mother gates are opened more quickly after the boss explodes.
 - Weaver Shrines now instantly grant abilities.
   - This feature is not fully implemented yet.
 
@@ -49,6 +53,10 @@ This is the main feature of the mod. Many things in the game are sped up or remo
 
 - Marks all areas as visited to skip the splash text that appears when you first visit an area.
   - This feature is not fully implemented yet.
+
+#### Skip Weakness
+
+- Skips the "weakness" segments of the game where Hornet moves very slowly.
 
 ### Debug Features
 
