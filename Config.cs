@@ -30,19 +30,19 @@ public static class Config
             "General",
             "SkipIntro",
             true,
-            "Skip the intro sequence and load the main menu directly when launching the game."
+            "Skips the \"Team Cherry\" splash screen and the screen that explains to you what the save indicator means."
         );
         FastMainMenu = config.Bind(
             "General",
             "FastMainMenu",
             true,
-            "Remove the fading animations on the main menu."
+            "Makes the menu appear instantly (instead of slowly fading in) and makes the save slot screen appear instantly (instead of animating all 4 rectangles one by one)."
         );
         BypassMainMenu = config.Bind(
             "General",
             "BypassMainMenu",
             true,
-            "Automatically navigate to the save file selection screen when the main menu loads."
+            "Makes the main menu automatically transition to the save file selection screen."
         );
 
         // In-Game Menu Features
@@ -50,22 +50,27 @@ public static class Config
             "General",
             "SkipSaveAndQuitConfirmation",
             true,
-            "Automatically confirm \"Yes\" when quitting to the main menu, bypassing the confirmation prompt."
+            "Skips the \"Yes\" or \"No\" confirmation menu that appears after selecting \"Save & Quit\"."
         );
-        FastText = config.Bind("General", "FastText", true, "Makes dialog text instantaneous.");
+        FastText = config.Bind(
+            "General",
+            "FastText",
+            true,
+            "Makes dialog text with NPCs instantaneous."
+        );
 
         // In-Game Features
         SkipCutscenes = config.Bind(
             "General",
             "SkipCutscenes",
             true,
-            "Automatically skip certain cutscene sequences in the game."
+            "Automatically skip certain cutscenes in the game. See the README.md for more specific details."
         );
         SkipAreaIntro = config.Bind(
             "General",
             "SkipAreaIntro",
             true,
-            "Mark all areas as visited to skip area intro screens."
+            "Marks all areas as visited to skip the splash text that appears when you first visit an area."
         );
         SkipWeakness = config.Bind(
             "General",
@@ -85,7 +90,7 @@ public static class Config
             "Debug",
             "DebugWarp",
             false,
-            "Warp to a specific scene upon loading into the game."
+            "Warp to a specific scene upon loading into the game. (Edit \"DebugWarp.cs\" to specify the scene.)"
         );
         LogFSMDetails = config.Bind(
             "Debug",

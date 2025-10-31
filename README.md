@@ -70,6 +70,11 @@ This is the main feature of the mod. Many things in the game are sped up or remo
 - Warps to a specific scene upon loading into the game. (Edit "DebugWarp.cs" to specify the scene.)
 - This feature is disabled by default. Enable it in the configuration file for debugging or testing purposes.
 
+#### Log FSM Details
+
+- Log detailed information about all FSMs (Finite State Machines) that are initialized. Useful for finding FSM names and game object names for modding.
+- This feature is disabled by default. Enable it in the configuration file for debugging or testing purposes.
+
 ## Configuration
 
 Every feature that this mod provides is optional, if you do not like a specific feature, you can disable it by editing the configuration file. By default, it is located at:
