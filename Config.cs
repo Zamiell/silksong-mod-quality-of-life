@@ -71,7 +71,7 @@ public static class Config
             "General",
             "SkipWeakness",
             true,
-            "Skips the \"weakness\" segments where Hornet moves very slowly."
+            "Skips the \"weakness\" segments of the game where Hornet moves very slowly."
         );
 
         // Debug Features
