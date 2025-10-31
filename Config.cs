@@ -85,7 +85,7 @@ public static class Config
             "Debug",
             "DebugWarp",
             false,
-            "Warp to the Tut_01 scene upon loading into the game."
+            "Warp to a specific scene upon loading into the game."
         );
         LogFSMDetails = config.Bind(
             "Debug",
