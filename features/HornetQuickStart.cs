@@ -7,7 +7,7 @@ public class GameManager_StartNewGame_Patch
 {
     static void Postfix()
     {
-        if (!Config.HornetQuickStart.Value)
+        if (!Config.SkipCutscenes.Value)
         {
             return;
         }
@@ -25,7 +25,7 @@ public class GameManager_OnWillActivateFirstLevel_Patch
 {
     static bool Prefix(GameManager __instance)
     {
-        if (!Config.HornetQuickStart.Value)
+        if (!Config.SkipCutscenes.Value)
         {
             return true; // Run the original method.
         }

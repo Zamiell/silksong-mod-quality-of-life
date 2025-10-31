@@ -96,7 +96,7 @@ public class GameManager_StartNewGame_Patch_2
 {
     static void Postfix()
     {
-        if (!Config.HornetQuickStart.Value)
+        if (!Config.SkipCutscenes.Value)
         {
             return;
         }

@@ -36,16 +36,19 @@ Under the hood, it uses the [BepInExPack for Silksong](https://thunderstore.io/c
 
 #### Skip Cutscenes
 
-- Automatically skips certain cutscene sequences in the game, including the opening cutscene.
-- Instantly grants abilities at Shrine Weaver locations by skipping the interaction sequence, dialogue, and animations.
+This is the main feature of the mod. Many things in the game are sped up or removed in order to cut out needless waiting.
+
+- The opening cutscene is removed. (New games start with Hornet lying on the ground.)
+- The "bind cutscene" is replaced with the normal "wake up" animation that happens after loading a save from a Weaver Shrine.
+- The Chapel Maid "weakness" cutscene is skipped (by setting `churchKeeperIntro` to true).
+- The initial Shakra conversation is skipped (by setting `metMapper` to true).
+- Weaver Shrines now instantly grant abilities.
+  - This feature is not fully implemented yet.
 
 #### Skip Area Intro
 
 - Marks all areas as visited to skip the splash text that appears when you first visit an area.
-
-#### Hornet Quick Start
-
-- Gives immediate control at the beginning of the game.
+  - This feature is not fully implemented yet.
 
 ### Debug Features
 

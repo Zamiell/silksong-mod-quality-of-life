@@ -16,7 +16,6 @@ public static class Config
     // In-Game Features
     public static ConfigEntry<bool> SkipCutscenes { get; private set; } = null!;
     public static ConfigEntry<bool> SkipAreaIntro { get; private set; } = null!;
-    public static ConfigEntry<bool> HornetQuickStart { get; private set; } = null!;
     public static ConfigEntry<bool> SkipWeakness { get; private set; } = null!;
 
     // Debug Features
@@ -67,12 +66,6 @@ public static class Config
             "SkipAreaIntro",
             true,
             "Mark all areas as visited to skip area intro screens."
-        );
-        HornetQuickStart = config.Bind(
-            "General",
-            "HornetQuickStart",
-            true,
-            "Makes the start of the game instantaneous."
         );
         SkipWeakness = config.Bind(
             "General",
