@@ -1,6 +1,6 @@
 # The Silksong Racing Mod
 
-This is a [Hollow Knight: Silksong](https://hollowknightsilksong.com/) mod that removes all waiting. It is designed as a quality of life mod for people wanting to practice the game casually or race each other in a head-to-head speedrun.
+This is a [Hollow Knight: Silksong](https://hollowknightsilksong.com/) mod that removes most of the painful waiting in the game. It is designed as a quality of life mod for people wanting to practice the game casually or for racing each other in a head-to-head speedrun.
 
 Under the hood, it uses the [BepInExPack for Silksong](https://thunderstore.io/c/hollow-knight-silksong/p/BepInEx/BepInExPack_Silksong/) to hook C# functions and [Silksong.FsmUtil](https://github.com/silksong-modding/Silksong.FsmUtil) to edit FSM logic.
 
@@ -36,7 +36,7 @@ Under the hood, it uses the [BepInExPack for Silksong](https://thunderstore.io/c
 
 #### Skip Cutscenes
 
-This is the main feature of the mod. Many things in the game are sped up or removed in order to cut out needless waiting.
+This is the main feature of the mod. Many things in the game are sped up or removed:
 
 - The opening cutscene is removed. (New games start with Hornet lying on the ground.)
 - The "bind cutscene" is replaced with the normal "wake up" animation that happens after loading a save from a Weaver Shrine.
