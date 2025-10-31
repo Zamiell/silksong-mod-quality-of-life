@@ -1,4 +1,4 @@
-namespace QoL.Features;
+namespace RacingMod.Features;
 
 [HarmonyPatch(typeof(StartManager), "Start")]
 public class StartManager_Start_Patch

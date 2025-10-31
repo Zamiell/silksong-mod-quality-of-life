@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace QoL.Features;
+namespace RacingMod.Features;
 
 // Make the menu text fade in instantly.
 [HarmonyPatch(typeof(UIManager), "Start")]

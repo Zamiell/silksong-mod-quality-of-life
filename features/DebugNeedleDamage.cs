@@ -1,4 +1,4 @@
-namespace QoL.Features;
+namespace RacingMod.Features;
 
 [HarmonyPatch(typeof(PlayerData), "nailDamage", MethodType.Getter)]
 public class PlayerData_NailDamage_Patch

@@ -1,4 +1,4 @@
-namespace QoL.Features;
+namespace RacingMod.Features;
 
 [HarmonyPatch(typeof(DialogueBox), "Start")]
 public class DialogueBoxPatch

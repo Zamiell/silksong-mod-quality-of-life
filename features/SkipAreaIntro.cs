@@ -1,4 +1,4 @@
-namespace QoL.Features;
+namespace RacingMod.Features;
 
 // Mark all main areas as visited to skip area intro screens.
 [HarmonyPatch(typeof(GameManager), "StartNewGame")]

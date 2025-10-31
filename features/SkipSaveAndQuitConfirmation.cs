@@ -1,4 +1,4 @@
-namespace QoL.Features;
+namespace RacingMod.Features;
 
 /// <summary>
 /// Patch to automatically select "Yes" when quitting to the main menu.

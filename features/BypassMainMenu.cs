@@ -1,6 +1,6 @@
 using GlobalEnums;
 
-namespace QoL.Features;
+namespace RacingMod.Features;
 
 /// <summary>
 /// Patch to automatically navigate to the save file selection screen when the main menu is loaded.

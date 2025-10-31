@@ -1,6 +1,6 @@
 using BepInEx.Configuration;
 
-namespace QoL;
+namespace RacingMod;
 
 public static class Config
 {

@@ -6,7 +6,7 @@ using System.Reflection;
 using HarmonyLib;
 using UnityEngine;
 
-namespace QoL;
+namespace RacingMod;
 
 [HarmonyPatch(typeof(GameManager), "LoadedFromMenu")]
 public class GameManager_LoadedFromMenu_Patch

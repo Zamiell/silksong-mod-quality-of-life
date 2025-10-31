@@ -1,6 +1,6 @@
 using GlobalEnums;
 
-namespace QoL.Features;
+namespace RacingMod.Features;
 
 [HarmonyPatch(typeof(GameManager), "StartNewGame")]
 public class GameManager_StartNewGame_Patch

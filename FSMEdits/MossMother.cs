@@ -1,4 +1,4 @@
-namespace QoL.FSMEdits;
+namespace RacingMod.FSMEdits;
 
 internal static class MossMother
 {

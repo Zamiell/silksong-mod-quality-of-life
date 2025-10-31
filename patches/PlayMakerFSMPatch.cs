@@ -1,6 +1,6 @@
-using QoL.FSMEdits;
+using RacingMod.FSMEdits;
 
-namespace QoL.Patches;
+namespace RacingMod.Patches;
 
 [HarmonyPatch(typeof(PlayMakerFSM), nameof(PlayMakerFSM.Start))]
 internal static class PlayMakerFSMPatch

@@ -1,4 +1,4 @@
-namespace QoL.Features;
+namespace RacingMod.Features;
 
 /// <summary>
 /// Patch to automatically skip the opening sequence cutscene.

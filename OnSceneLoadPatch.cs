@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace QoL;
+namespace RacingMod;
 
 internal static class OnSceneLoadPatch
 {

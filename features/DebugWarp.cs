@@ -1,4 +1,4 @@
-namespace QoL.Features;
+namespace RacingMod.Features;
 
 [HarmonyPatch(typeof(GameManager), "OnWillActivateFirstLevel")]
 public class GameManager_OnWillActivateFirstLevel_DebugWarp_Patch

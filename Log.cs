@@ -1,7 +1,7 @@
 using BepInEx;
 using UnityEngine;
 
-namespace QoL;
+namespace RacingMod;
 
 /// <summary>
 /// Logging utility that dynamically retrieves the mod name from the BepInPlugin attribute.
@@ -17,7 +17,7 @@ public static class Log
             if (_modName == null)
             {
                 var attribute = (BepInPlugin)
-                    System.Attribute.GetCustomAttribute(typeof(QoL), typeof(BepInPlugin));
+                    System.Attribute.GetCustomAttribute(typeof(RacingMod), typeof(BepInPlugin));
                 _modName = attribute?.Name ?? "Unknown";
             }
             return _modName;

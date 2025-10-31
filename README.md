@@ -80,18 +80,13 @@ C:\Users\[username]\AppData\Roaming\r2modmanPlus-local\HollowKnightSilksong\prof
 
 ## Credits
 
-Also see Vitaxses' excelled [Silksong QoL mod](https://github.com/Vitaxses/Silksong.QoL).
+Also see Vitaxses' excellent [Silksong QoL mod](https://github.com/Vitaxses/Silksong.QoL).
 
 ## TODO
 
-- Automatically grant Silk Spear upon reading the thing.
-  - `hasNeedleThrow = True`
-  - `hasSilkSpecial = True`
 - Boss stuff:
-  - Moss Mother intro
-  - Moss Mother death animation
-  - Open the Moss Mother doors faster after she dies.
   - Bell Beast intro
   - Bell Beast death animation
 - Speed up grabbing silk heart into cutscene
   - Set `UnlockedFastTravel` after getting silk heart to avoid roaring cutscene when walking to the right
+- do all Weaver Shrines
