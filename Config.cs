@@ -20,7 +20,7 @@ public static class Config
 
     // Debug Features
     public static ConfigEntry<bool> DebugNeedleDamage { get; private set; } = null!;
-    public static ConfigEntry<bool> DebugWarp { get; private set; } = null!;
+    public static ConfigEntry<string> DebugWarp { get; private set; } = null!;
     public static ConfigEntry<bool> LogFSMDetails { get; private set; } = null!;
 
     public static void Initialize(ConfigFile config)
@@ -89,8 +89,8 @@ public static class Config
         DebugWarp = config.Bind(
             "Debug",
             "DebugWarp",
-            false,
-            "Warp to a specific scene upon loading into the game. (Edit \"DebugWarp.cs\" to specify the scene.)"
+            "",
+            "Warp to a specific scene upon loading into the game. Specify the scene name to enable warping, or leave empty to disable. (e.g. \"Tut_01\")"
         );
         LogFSMDetails = config.Bind(
             "Debug",
